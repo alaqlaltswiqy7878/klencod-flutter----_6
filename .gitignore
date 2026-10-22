@@ -1,0 +1,8 @@
+# Gradle / build caches (لا ترفعها إلى GitHub)
+.gradle/
+android/.gradle/
+build/
+.dart_tool/
+.klencod_backup/
+*.lock
+local.properties

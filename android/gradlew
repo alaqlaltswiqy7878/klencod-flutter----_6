@@ -1,0 +1,12 @@
+#!/usr/bin/env sh
+set -e
+APP_HOME="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+if [ -f "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" ]; then
+  exec java -classpath "$APP_HOME/gradle/wrapper/gradle-wrapper.jar" org.gradle.wrapper.GradleWrapperMain "$@"
+fi
+if command -v gradle >/dev/null 2>&1; then
+  exec gradle "$@"
+fi
+echo "Gradle wrapper JAR is not included and system Gradle was not found." >&2
+echo "Run 'flutter create . --platforms=android' once to regenerate standard wrapper files." >&2
+exit 1
